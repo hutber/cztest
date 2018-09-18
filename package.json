@@ -1,0 +1,55 @@
+{
+  "name": "precommit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:watch": "react-scripts test --env=jsdom",
+    "lint-scripts": "eslint './{src/**,test/**,config/**,.}/*.js'",
+    "lint-styles": "stylelint './src/**/*.css'",
+    "lint": "npm run lint-scripts && npm run lint-styles",
+    "commit": "git-cz"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint",
+      "git add"
+    ],
+    "*.css": [
+      "stylelint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/runtime": "^7.0.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^9.0.0",
+    "babel-runtime": "^6.26.0",
+    "cz-conventional-changelog": "^2.1.0",
+    "eslint": "^5.6.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react-app": "^3.0.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.2",
+    "prettier": "^1.14.2",
+    "stylelint": "^9.5.0",
+    "stylelint-config-standard": "^18.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
